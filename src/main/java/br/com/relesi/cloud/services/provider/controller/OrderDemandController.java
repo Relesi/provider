@@ -14,8 +14,8 @@ import br.com.relesi.cloud.services.provider.model.OrderDemand;
 import br.com.relesi.cloud.services.provider.services.OrderDemandService;
 
 @RestController
-@RequestMapping("order")
-public class OrderController {
+@RequestMapping("orderDemand")
+public class OrderDemandController {
 
 	@Autowired
 	private OrderDemandService orderDemandService;

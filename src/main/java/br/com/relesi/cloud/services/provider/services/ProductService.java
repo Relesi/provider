@@ -15,7 +15,7 @@ public class ProductService {
 	private ProductRepository productRepository;
 
 	public List<Product> getProductToState(String state) {
-		return productRepository.findByEstado(state);
+		return productRepository.findByState(state);
 	}
 
 }
