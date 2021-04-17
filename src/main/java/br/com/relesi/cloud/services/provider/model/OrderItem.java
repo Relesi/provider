@@ -27,8 +27,8 @@ public class OrderItem {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	 public Integer getQuantity() {
+
+	public Integer getQuantity() {
 		return quantity;
 	}
 
@@ -43,9 +43,5 @@ public class OrderItem {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-
-	
-	
-
 
 }

@@ -10,23 +10,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.relesi.cloud.services.provider.dto.OrderItemDTO;
-import br.com.relesi.cloud.services.provider.model.Order;
-import br.com.relesi.cloud.services.provider.services.OrderService;
+import br.com.relesi.cloud.services.provider.model.OrderDemand;
+import br.com.relesi.cloud.services.provider.services.OrderDemandService;
 
 @RestController
 @RequestMapping("order")
 public class OrderController {
 
 	@Autowired
-	private OrderService orderService;
+	private OrderDemandService orderDemandService;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public Order placeOrder(@RequestBody List<OrderItemDTO> products) {
-		return orderService.placeOrder(products);
+	public OrderDemand placeOrder(@RequestBody List<OrderItemDTO> products) {
+		return orderDemandService.placeOrder(products);
 	}
 
 	@RequestMapping("/{id}")
-	public Order getOrderToId(@PathVariable Long id) {
-		return orderService.getOrderToId(id);
+	public OrderDemand getOrderToId(@PathVariable Long id) {
+		return orderDemandService.getOrderToId(id);
 	}
 }

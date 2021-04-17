@@ -13,11 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Order {
-
+public class OrderDemand {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private Integer preparation;
@@ -29,12 +28,12 @@ public class Order {
 	@JoinColumn(name = "orderId")
 	private List<OrderItem> items;
 
-	public Order(List<OrderItem> items) {
+	public OrderDemand(List<OrderItem> items) {
 		this.items = items;
 		this.status = OrderStatus.RECEIVED;
 	}
 
-	public Order() {
+	public OrderDemand() {
 	}
 
 	public List<OrderItem> getItems() {
@@ -68,7 +67,5 @@ public class Order {
 	public void setPreparation(Integer preparation) {
 		this.preparation = preparation;
 	}
-
-	
 
 }

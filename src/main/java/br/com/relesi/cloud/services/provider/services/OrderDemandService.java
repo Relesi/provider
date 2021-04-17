@@ -7,38 +7,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.relesi.cloud.services.provider.dto.OrderItemDTO;
-import br.com.relesi.cloud.services.provider.model.Order;
+import br.com.relesi.cloud.services.provider.model.OrderDemand;
 import br.com.relesi.cloud.services.provider.model.OrderItem;
 import br.com.relesi.cloud.services.provider.model.Product;
-import br.com.relesi.cloud.services.provider.repository.OrderRepository;
+import br.com.relesi.cloud.services.provider.repository.OrderDemandRepository;
 import br.com.relesi.cloud.services.provider.repository.ProductRepository;
 
 @Service
-public class OrderService {
+public class OrderDemandService {
 	
 	
 	@Autowired
-	private OrderRepository orderRepository;
+	private OrderDemandRepository orderDemandRepository;
 	
 	@Autowired
 	private ProductRepository productRepository;
 
-	public Order placeOrder(List<OrderItemDTO> items) {
+	public OrderDemand placeOrder(List<OrderItemDTO> items) {
 		
 		if(items == null) {
 			return null;
 		}
 		
 		List<OrderItem> orderItems = toorderItems(items);
-		Order order = new Order(orderItems);
+		OrderDemand order = new OrderDemand(orderItems);
 		order.setPreparation(items.size());
-		return orderRepository.save(order);
+		return orderDemandRepository.save(order);
 	}
 	
 
 
-	public Order getOrderToId(Long id) {
-		return this.orderRepository.findById(id).orElse(new Order());
+	public OrderDemand getOrderToId(Long id) {
+		return this.orderDemandRepository.findById(id).orElse(new OrderDemand());
 	}
 
 	private List<OrderItem> toorderItems(List<OrderItemDTO> items) {
@@ -50,7 +50,7 @@ public class OrderService {
 		
 		List<Product> productsOrder = productRepository.findByIdIn(idsProducts);
 		
-		List<OrderItem> orderItem = items
+		List<OrderItem> orderItems = items
 			.stream()
 			.map(item -> {
 				Product product = productsOrder
@@ -58,12 +58,12 @@ public class OrderService {
 						.filter(p -> p.getId() == item.getId())
 						.findFirst().get();
 				
-				OrderItem orderItems = new OrderItem();
-				orderItems.setProduct(product);
-				orderItems.setQuantity(item.getQuantity());
-				return orderItems;
+				OrderItem orderItem = new OrderItem();
+				orderItem.setProduct(product);
+				orderItem.setQuantity(item.getQuantity());
+				return orderItem;
 			})
 			.collect(Collectors.toList());
-		return orderItem;
+		return orderItems;
 	}
 }
