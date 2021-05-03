@@ -13,12 +13,12 @@ import br.com.relesi.cloud.services.provider.services.InfoService;
 @RestController
 @RequestMapping("/info")
 public class InfoController {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(InfoController.class);
-	
+
 	@Autowired
 	private InfoService infoservice;
-	
+
 	@RequestMapping("/{state}")
 	public InfoProvider getInfoToState(@PathVariable String state) {
 		LOG.info("received request information from the supplier by {}", state);
