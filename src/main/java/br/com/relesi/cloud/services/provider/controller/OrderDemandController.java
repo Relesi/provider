@@ -18,7 +18,7 @@ import br.com.relesi.cloud.services.provider.services.OrderDemandService;
 @RestController
 @RequestMapping("orderDemand")
 public class OrderDemandController {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(OrderDemandController.class);
 
 	@Autowired

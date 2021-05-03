@@ -3,7 +3,7 @@ package br.com.relesi.cloud.services.provider.dto;
 public class bookingDTO {
 
 	public Integer idReserva;
-	
+
 	public Integer tempoDePreparo;
 
 	public Integer getIdReserva() {
@@ -21,5 +21,5 @@ public class bookingDTO {
 	public void setTempoDePreparo(Integer tempoDePreparo) {
 		this.tempoDePreparo = tempoDePreparo;
 	}
-	
+
 }

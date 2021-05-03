@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.relesi.cloud.services.provider.model.OrderDemand;
 
 @Repository
-public interface OrderDemandRepository extends CrudRepository<OrderDemand, Long>{
+public interface OrderDemandRepository extends CrudRepository<OrderDemand, Long> {
 
 }
